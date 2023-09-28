@@ -23,6 +23,11 @@ export default class PostConcept {
     return posts;
   }
 
+  async getById(_id: ObjectId) {
+    const idFilter = { _id: _id };
+    return await this.posts.readOne(idFilter);
+  }
+
   async delete(_id: ObjectId) {
     await this.posts.deleteOne({ _id });
     return { msg: "Post deleted successfully!" };
